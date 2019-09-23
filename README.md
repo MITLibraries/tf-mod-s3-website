@@ -1,3 +1,5 @@
+*NOTE*: This module is slated for deletion! DO NOT USE!
+
 
 This modules creates an S3 backed website.
 
