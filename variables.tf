@@ -3,7 +3,7 @@ variable "name" {
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map(string)
   default     = {}
   description = "Additional tags (e.g. `map('BusinessUnit','XYZ')`)"
 }
@@ -22,11 +22,6 @@ variable "index_document" {
   description = "Amazon S3 returns this index document when requests are made to the root domain or any of the subfolders"
 }
 
-variable "redirect_all_requests_to" {
-  default     = ""
-  description = "A hostname to redirect all website requests for this bucket to. If this is set `index_document` will be ignored."
-}
-
 variable "error_document" {
   default     = "404.html"
   description = "An absolute path to the document to return in case of a 4XX error"
@@ -38,25 +33,25 @@ variable "routing_rules" {
 }
 
 variable "cors_allowed_headers" {
-  type        = "list"
+  type        = list(string)
   default     = ["*"]
   description = "List of allowed headers"
 }
 
 variable "cors_allowed_methods" {
-  type        = "list"
+  type        = list(string)
   default     = ["GET"]
   description = "List of allowed methods (e.g. ` GET, PUT, POST, DELETE, HEAD`) "
 }
 
 variable "cors_allowed_origins" {
-  type        = "list"
+  type        = list(string)
   default     = ["*"]
   description = "List of allowed origins (e.g. ` example.com, test.com`)"
 }
 
 variable "cors_expose_headers" {
-  type        = "list"
+  type        = list(string)
   default     = ["ETag"]
   description = "List of expose header in the response"
 }
@@ -80,3 +75,4 @@ variable "force_destroy" {
   default     = ""
   description = "Delete all objects from the bucket so that the bucket can be destroyed without error (e.g. `true` or `false`)"
 }
+
